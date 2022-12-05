@@ -21,5 +21,5 @@ data class Movie(
     var movieWatched : Boolean,
     var movieRate : Int,
     @NonNull
-    var moviegenre : String,
+    var movieGenre : String,
 ) : Parcelable
