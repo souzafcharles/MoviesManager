@@ -1,9 +1,9 @@
-package br.edu.ifsp.ads.pdm.mycontacts.controller
+package br.edu.ifsp.ads.pdm.moviesmanager.controller
 
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
-import br.edu.ifsp.ads.pdm.mycontacts.model.dao.ContactDAO
-import br.edu.ifsp.ads.pdm.mycontacts.model.database.ContactDAOSqlite
-import br.edu.ifsp.ads.pdm.mycontacts.view.MainActivity
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.model.dao.ContactDAO
+import br.edu.ifsp.ads.pdm.moviesmanager.model.database.ContactDAOSqlite
+import br.edu.ifsp.ads.pdm.moviesmanager.view.MainActivity
 
 class ContactController(private val mainActivity: MainActivity) {
     private val contactDaoImpl: ContactDAO = ContactDAOSqlite(mainActivity)

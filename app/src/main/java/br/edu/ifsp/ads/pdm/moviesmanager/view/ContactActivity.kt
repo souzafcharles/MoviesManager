@@ -1,14 +1,13 @@
-package br.edu.ifsp.ads.pdm.mycontacts.view
+package br.edu.ifsp.ads.pdm.moviesmanager.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import br.edu.ifsp.ads.pdm.mycontacts.databinding.ActivityContactBinding
-import br.edu.ifsp.ads.pdm.mycontacts.model.Constant.EXTRA_CONTACT
-import br.edu.ifsp.ads.pdm.mycontacts.model.Constant.INVALID_CONTACT_ID
-import br.edu.ifsp.ads.pdm.mycontacts.model.Constant.VIEW_CONTACT
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.databinding.ActivityContactBinding
+import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_CONTACT
+import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.VIEW_CONTACT
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
 
 class ContactActivity : AppCompatActivity() {
     private val acb: ActivityContactBinding by lazy {

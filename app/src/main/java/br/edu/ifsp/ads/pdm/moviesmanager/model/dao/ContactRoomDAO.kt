@@ -1,7 +1,7 @@
-package br.edu.ifsp.ads.pdm.mycontacts.model.dao
+package br.edu.ifsp.ads.pdm.moviesmanager.model.dao
 
 import androidx.room.*
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
 
 @Dao
 interface ContactRoomDAO {

@@ -1,12 +1,12 @@
-package br.edu.ifsp.ads.pdm.mycontacts.controller
+package br.edu.ifsp.ads.pdm.moviesmanager.controller
 
 import android.os.AsyncTask
 import androidx.room.Room
-import br.edu.ifsp.ads.pdm.mycontacts.model.dao.ContactRoomDAO
-import br.edu.ifsp.ads.pdm.mycontacts.model.dao.ContactRoomDAO.Constant.CONTACT_DATABASE_FILE
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
-import br.edu.ifsp.ads.pdm.mycontacts.model.database.ContactRoomDAODatabase
-import br.edu.ifsp.ads.pdm.mycontacts.view.MainActivity
+import br.edu.ifsp.ads.pdm.moviesmanager.model.dao.ContactRoomDAO
+import br.edu.ifsp.ads.pdm.moviesmanager.model.dao.ContactRoomDAO.Constant.CONTACT_DATABASE_FILE
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.model.database.ContactRoomDAODatabase
+import br.edu.ifsp.ads.pdm.moviesmanager.view.MainActivity
 
 class ContactRoomController(private val mainActivity: MainActivity) {
     private val contactDaoImpl: ContactRoomDAO by lazy {

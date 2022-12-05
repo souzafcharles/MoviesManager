@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'br.edu.ifsp.ads.pdm.mycontacts'
+    namespace 'br.edu.ifsp.ads.pdm.moviesmanager'
     compileSdk 32
 
     defaultConfig {
-        applicationId "br.edu.ifsp.ads.pdm.mycontacts"
+        applicationId "br.edu.ifsp.ads.pdm.moviesmanager"
         minSdk 21
         targetSdk 32
         versionCode 1

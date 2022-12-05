@@ -1,4 +1,4 @@
-package br.edu.ifsp.ads.pdm.mycontacts.model.entity
+package br.edu.ifsp.ads.pdm.moviesmanager.model.entity
 
 import android.os.Parcelable
 import androidx.annotation.NonNull

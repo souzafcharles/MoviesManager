@@ -1,4 +1,4 @@
-package br.edu.ifsp.ads.pdm.mycontacts.adapter
+package br.edu.ifsp.ads.pdm.moviesmanager.adapter
 
 import android.content.Context
 import android.content.Context.LAYOUT_INFLATER_SERVICE
@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
-import br.edu.ifsp.ads.pdm.mycontacts.R
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.R
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
 
 class ContactAdapter(
     context: Context,

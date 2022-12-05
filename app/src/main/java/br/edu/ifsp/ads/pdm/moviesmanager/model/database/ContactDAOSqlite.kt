@@ -1,4 +1,4 @@
-package br.edu.ifsp.ads.pdm.mycontacts.model.database
+package br.edu.ifsp.ads.pdm.moviesmanager.model.database
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,9 +6,9 @@ import android.content.Context.MODE_PRIVATE
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
-import br.edu.ifsp.ads.pdm.mycontacts.R
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
-import br.edu.ifsp.ads.pdm.mycontacts.model.dao.ContactDAO
+import br.edu.ifsp.ads.pdm.moviesmanager.R
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.model.dao.ContactDAO
 import java.sql.SQLException
 
 class ContactDAOSqlite(context: Context) : ContactDAO {

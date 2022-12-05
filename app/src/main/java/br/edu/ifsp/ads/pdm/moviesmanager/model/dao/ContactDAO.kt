@@ -1,6 +1,6 @@
-package br.edu.ifsp.ads.pdm.mycontacts.model.dao
+package br.edu.ifsp.ads.pdm.moviesmanager.model.dao
 
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
 
 interface ContactDAO {
     fun createContact(contact: Contact): Int

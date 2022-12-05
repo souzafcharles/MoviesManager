@@ -1,4 +1,4 @@
-package br.edu.ifsp.ads.pdm.mycontacts.model
+package br.edu.ifsp.ads.pdm.moviesmanager.model
 
 object Constant {
     const val EXTRA_CONTACT = "EXTRA_CONTACT"

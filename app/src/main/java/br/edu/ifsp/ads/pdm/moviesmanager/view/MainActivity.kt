@@ -1,4 +1,4 @@
-package br.edu.ifsp.ads.pdm.mycontacts.view
+package br.edu.ifsp.ads.pdm.moviesmanager.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,13 +11,13 @@ import android.widget.AdapterView.AdapterContextMenuInfo
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import br.edu.ifsp.ads.pdm.mycontacts.R
-import br.edu.ifsp.ads.pdm.mycontacts.adapter.ContactAdapter
-import br.edu.ifsp.ads.pdm.mycontacts.controller.ContactRoomController
-import br.edu.ifsp.ads.pdm.mycontacts.databinding.ActivityMainBinding
-import br.edu.ifsp.ads.pdm.mycontacts.model.Constant.EXTRA_CONTACT
-import br.edu.ifsp.ads.pdm.mycontacts.model.Constant.VIEW_CONTACT
-import br.edu.ifsp.ads.pdm.mycontacts.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.R
+import br.edu.ifsp.ads.pdm.moviesmanager.adapter.ContactAdapter
+import br.edu.ifsp.ads.pdm.moviesmanager.controller.ContactRoomController
+import br.edu.ifsp.ads.pdm.moviesmanager.databinding.ActivityMainBinding
+import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_CONTACT
+import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.VIEW_CONTACT
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
 
 class MainActivity : AppCompatActivity() {
     private val amb: ActivityMainBinding by lazy {
