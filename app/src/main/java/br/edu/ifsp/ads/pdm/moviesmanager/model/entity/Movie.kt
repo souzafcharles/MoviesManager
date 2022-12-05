@@ -10,16 +10,16 @@ import kotlinx.parcelize.Parcelize
 @Entity
 data class Movie(
     @PrimaryKey
-    var name: String,
+    var movieName: String,
     @NonNull
-    var year : Int,
+    var movieYear : Int,
     @NonNull
-    var studio: String,
+    var movieStudioOrProducer: String,
     @NonNull
-    var duration : Int,
+    var movieDuration : Int,
     @NonNull
-    var watched : Boolean,
-    var grade : Int,
+    var movieWatched : Boolean,
+    var movieRate : Int,
     @NonNull
-    var genre : String,
+    var moviegenre : String,
 ) : Parcelable
