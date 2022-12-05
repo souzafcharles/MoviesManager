@@ -7,11 +7,11 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import br.edu.ifsp.ads.pdm.moviesmanager.R
-import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Movie
 import br.edu.ifsp.ads.pdm.moviesmanager.model.dao.ContactDAO
 import java.sql.SQLException
 
-class ContactDAOSqlite(context: Context) : ContactDAO {
+class MovieDAOSqlite(context: Context) : ContactDAO {
 
     // Companio object can access every thing that is private
     companion object Constant {
@@ -49,7 +49,7 @@ class ContactDAOSqlite(context: Context) : ContactDAO {
         }
     }
 
-    private fun Contact.toContentValues() = with(ContentValues()) {
+    private fun Movie.toContentValues() = with(ContentValues()) {
         put(NAME_COLUMN, name)
         put(ADDRESS_COLUMN, address)
         put(PHONE_COLUMN, phone)
@@ -57,7 +57,7 @@ class ContactDAOSqlite(context: Context) : ContactDAO {
         this
     }
 
-    private fun contactToContentValues(contact: Contact) = with(ContentValues()) {
+    private fun contactToContentValues(contact: Movie) = with(ContentValues()) {
         put(NAME_COLUMN, contact.name)
         put(ADDRESS_COLUMN, contact.address)
         put(PHONE_COLUMN, contact.phone)
@@ -65,7 +65,7 @@ class ContactDAOSqlite(context: Context) : ContactDAO {
         this
     }
 
-    private fun Cursor.rowToContact() = Contact(
+    private fun Cursor.rowToContact() = Movie(
         getInt(getColumnIndexOrThrow(ID_COLUMN)),
         getString(getColumnIndexOrThrow(NAME_COLUMN)),
         getString(getColumnIndexOrThrow(ADDRESS_COLUMN)),
@@ -73,14 +73,14 @@ class ContactDAOSqlite(context: Context) : ContactDAO {
         getString(getColumnIndexOrThrow(EMAIL_COLUMN))
     )
 
-    override fun createContact(contact: Contact) = contactSqliteDatabase.insert(
+    override fun createContact(contact: Movie) = contactSqliteDatabase.insert(
         CONTACT_TABLE,
         null,
         contactToContentValues(contact)
     ).toInt()
 
 
-    override fun retrieveContact(id: Int): Contact? {
+    override fun retrieveContact(id: Int): Movie? {
         val cursor = contactSqliteDatabase.rawQuery(
             "SELECT * FROM $CONTACT_TABLE WHERE $ID_COLUMN = ?",
             arrayOf(id.toString())
@@ -91,8 +91,8 @@ class ContactDAOSqlite(context: Context) : ContactDAO {
         return contact
     }
 
-    override fun retrieveContacts(): MutableList<Contact> {
-        val contactList = mutableListOf<Contact>()
+    override fun retrieveContacts(): MutableList<Movie> {
+        val contactList = mutableListOf<Movie>()
         val cursor = contactSqliteDatabase.rawQuery(
             "SELECT * FROM $CONTACT_TABLE ORDER BY $NAME_COLUMN",
             null
@@ -104,7 +104,7 @@ class ContactDAOSqlite(context: Context) : ContactDAO {
         return contactList
     }
 
-    override fun updateContact(contact: Contact) = contactSqliteDatabase.update(
+    override fun updateContact(contact: Movie) = contactSqliteDatabase.update(
         CONTACT_TABLE,
         contact.toContentValues(),
         "$ID_COLUMN = ?",
