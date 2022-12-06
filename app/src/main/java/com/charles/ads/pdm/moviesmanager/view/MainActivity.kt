@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                         if(!adding) {
                             movieController.update(_movie)
                         } else {
-                            Toast.makeText(this, "Já existe um resgistro de filme com esse nome!.", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this, "Já existe um resgistro de filme com esse nome!", Toast.LENGTH_LONG).show()
                         }
                     } else {
                         movieController.insert(_movie)
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.filterMovieNameMi -> {
-                if (movieList.size <= 0) Toast.makeText(this, "Não há registros de filmes cadastrados.", Toast.LENGTH_SHORT).show()
+                if (movieList.size <= 0) Toast.makeText(this, "Não há registros de filmes cadastrados!", Toast.LENGTH_SHORT).show()
                 else {
                     movieList.sortBy { it.name }
                     movieAdapter.notifyDataSetChanged()
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.filterMovieGradeMi -> {
-                if (movieList.size <= 0) Toast.makeText(this, "Não há registros de filmes cadastrados.", Toast.LENGTH_SHORT).show()
+                if (movieList.size <= 0) Toast.makeText(this, "Não há registros de filmes cadastrados!", Toast.LENGTH_SHORT).show()
                 else {
                     movieList.sortBy { it.grade }
                     movieAdapter.notifyDataSetChanged()
