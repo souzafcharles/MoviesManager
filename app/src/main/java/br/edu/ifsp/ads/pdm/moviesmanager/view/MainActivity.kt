@@ -13,7 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.ads.pdm.moviesmanager.R
 import br.edu.ifsp.ads.pdm.moviesmanager.adapter.ContactAdapter
-import br.edu.ifsp.ads.pdm.moviesmanager.controller.ContactRoomController
+import br.edu.ifsp.ads.pdm.moviesmanager.controller.MovieRoomController
 import br.edu.ifsp.ads.pdm.moviesmanager.databinding.ActivityMainBinding
 import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_CONTACT
 import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.VIEW_CONTACT
@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var carl: ActivityResultLauncher<Intent>
 
     // Controller
-    private val contactController: ContactRoomController by lazy {
-        ContactRoomController(this)
+    private val contactController: MovieRoomController by lazy {
+        MovieRoomController(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
