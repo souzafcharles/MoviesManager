@@ -9,7 +9,7 @@ import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_CONTACT
 import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.VIEW_CONTACT
 import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
 
-class ContactActivity : AppCompatActivity() {
+class MovieActivity : AppCompatActivity() {
     private val acb: ActivityContactBinding by lazy {
         ActivityContactBinding.inflate(layoutInflater)
     }

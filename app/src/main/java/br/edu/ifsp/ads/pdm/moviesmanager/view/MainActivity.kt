@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         amb.contactsLv.onItemClickListener =
             AdapterView.OnItemClickListener { _, _, position, _ ->
                 val contact = contactList[position]
-                val contactIntent = Intent(this@MainActivity, ContactActivity::class.java)
+                val contactIntent = Intent(this@MainActivity, MovieActivity::class.java)
                 contactIntent.putExtra(EXTRA_CONTACT, contact)
                 contactIntent.putExtra(VIEW_CONTACT, true)
                 startActivity(contactIntent)
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.addContactMi -> {
-                carl.launch(Intent(this, ContactActivity::class.java))
+                carl.launch(Intent(this, MovieActivity::class.java))
                 true
             }
             else -> { false }
@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.editContactMi -> {
                 // Chama a tela para editar o contato
-                val contactIntent = Intent(this, ContactActivity::class.java)
+                val contactIntent = Intent(this, MovieActivity::class.java)
                 contactIntent.putExtra(EXTRA_CONTACT, contact)
                 contactIntent.putExtra(VIEW_CONTACT, false)
                 carl.launch(contactIntent)

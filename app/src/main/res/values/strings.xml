@@ -1,17 +1,32 @@
 <resources>
     <string name="app_name">MoviesManager</string>
-    <string name="nome">Nome</string>
-    <string name="ano_lancamento">Ano de lançamento</string>
-    <string name="estudio_ou_produtora">Estúdio ou Produtora</string>
-    <string name="tempo_duracao">Tempo de duração (em minutos)</string>
-    <string name="assistido">Já foi assistido</string>
-    <string name="nota">Nota</string>
-    <string name="genero">Gênero</string>
-    <string name="remover_filme">Remover Filme</string>
-    <string name="editar_filme">Editar Filme</string>
-    <string name="adicionar_filme">Inserir Filme</string>
-    <string name="salvar">Salvar</string>
-    <string-array name="array_generos">
+    <string name="name">Nome do filme</string>
+    <string name="year">Ano de lançamento</string>
+    <string name="studio_or_producer">Estúdio ou Produtora</string>
+    <string name="duration">Tempo de duração (em minutos)</string>
+    <string name="watched">Já foi assistido</string>
+    <string name="rate">Nota</string>
+    <string name="add_movie">Adicionar Filme</string>
+    <string name="edit_movie">Editar Filme</string>
+    <string name="remove_movie">Remover Filme</string>
+    <string name="filter">Filtrar Filmes</string>
+    <string name="genre">Gênero</string>
+    <string name="cancel">Voltar</string>
+    <string name="confirm">Salvar</string>
+    <string-array name="hatesChoice">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string-array name="genresChoice">
         <item>Ação</item>
         <item>Aventura</item>
         <item>Cinema de arte</item>
