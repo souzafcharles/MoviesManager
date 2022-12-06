@@ -1,24 +1,23 @@
-package br.edu.ifsp.ads.pdm.moviesmanager.view
+package com.projeto.ads.pdm.moviesmanager.view
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
-import android.widget.AdapterView.AdapterContextMenuInfo
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
-import br.edu.ifsp.ads.pdm.moviesmanager.R
-import br.edu.ifsp.ads.pdm.moviesmanager.adapter.MovieAdapter
-import br.edu.ifsp.ads.pdm.moviesmanager.controller.MovieRoomController
-import br.edu.ifsp.ads.pdm.moviesmanager.databinding.ActivityMainBinding
-import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_MOVIE
-import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.VIEW_MOVIE
-import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Movie
+import com.projeto.ads.pdm.moviesManager.R
+import com.projeto.ads.pdm.moviesManager.databinding.ActivityMainBinding
+import com.projeto.ads.pdm.moviesmanager.adapter.MovieAdapter
+import com.projeto.ads.pdm.moviesmanager.controller.MovieRoomController
+import com.projeto.ads.pdm.moviesmanager.model.Constant.EXTRA_MOVIE
+import com.projeto.ads.pdm.moviesmanager.model.Constant.VIEW_MOVIE
+import com.projeto.ads.pdm.moviesmanager.model.entity.Movie
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,20 +49,22 @@ class MainActivity : AppCompatActivity() {
             if (result.resultCode == RESULT_OK) {
                 val movie = result.data?.getParcelableExtra<Movie>(EXTRA_MOVIE)
                 movie?.let { _movie->
-                    val position = movieList.indexOfFirst { it.movieName == movie.movieName }
-                    if (position == -1) {
-                        movieController.insert(_movie)
-                    } else {
+                    val position = movieList.indexOfFirst { it.name == movie.name }
+                    if (position != -1) {
                         if(!adding) {
                             movieController.update(_movie)
-                        } else {
-                            Toast.makeText(this, "Esse filme já está cadastrado!", Toast.LENGTH_LONG).show()
                         }
+                        else {
+                            Toast.makeText(this, "Não é possível cadastrar mais de um filme com o mesmo nome.", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    else {
+                        movieController.insert(_movie)
                     }
                     movieAdapter.notifyDataSetChanged()
                 }
             }
-            else Toast.makeText(this, "Operação não permitida.", Toast.LENGTH_SHORT).show()
+            else Toast.makeText(this, "Operação cancelada.", Toast.LENGTH_SHORT).show()
             adding = false
         }
 
@@ -83,6 +84,56 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.filterMovieNameMi -> {
+                if(movieList.size > 0) {
+                    movieList.sortBy { it.name }
+                    movieAdapter.notifyDataSetChanged()
+                }
+                else Toast.makeText(this, "Não existem filmes cadastrados.", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.filterMovieGradeMi -> {
+                if(movieList.size > 0) {
+                    movieList.sortBy { it.grade }
+                    movieAdapter.notifyDataSetChanged()
+                }
+                else Toast.makeText(this, "Não existem filmes cadastrados.", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.addMovieMi -> {
+                movieActivityResultLauncher.launch(Intent(this, MovieActivity::class.java))
+                adding = true
+                true
+            }
+            else -> { false }
+        }
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, view: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        menuInflater.inflate(R.menu.context_menu_main, menu)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        val movie = movieList[(item.menuInfo as AdapterView.AdapterContextMenuInfo).position]
+        return when(item.itemId) {
+            R.id.editMovieMi -> {
+                val movieIntent = Intent(this, MovieActivity::class.java)
+                movieIntent.putExtra(EXTRA_MOVIE, movie)
+                movieIntent.putExtra(VIEW_MOVIE, false)
+                movieActivityResultLauncher.launch(movieIntent)
+                true
+            }
+            R.id.removeMovieMi -> {
+                movieController.delete(movie)
+                movieAdapter.notifyDataSetChanged()
+                true
+            }
+            else -> { false }
+        }
     }
 
     fun updateMovieList(_movieList: MutableList<Movie>) {
