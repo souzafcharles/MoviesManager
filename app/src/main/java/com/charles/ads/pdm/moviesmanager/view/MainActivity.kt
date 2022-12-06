@@ -15,10 +15,10 @@ import com.charles.ads.pdm.moviesmanager.R
 import com.charles.ads.pdm.moviesmanager.databinding.ActivityMainBinding
 import com.charles.ads.pdm.moviesManager.adapter.MovieAdapter
 import com.charles.ads.pdm.moviesManager.view.MovieActivity
-import com.charles.ads.pdm.moviesmanager.model.Constant.EXTRA_MOVIE
-import com.charles.ads.pdm.moviesmanager.model.Constant.VIEW_MOVIE
 import com.charles.ads.pdm.moviesmanager.controller.MovieRoomController
 import com.charles.ads.pdm.moviesmanager.model.entity.Movie
+import com.charles.ads.pdm.moviesmanager.model.Constant.EXTRA_MOVIE
+import com.charles.ads.pdm.moviesmanager.model.Constant.VIEW_MOVIE
 
 
 class MainActivity : AppCompatActivity() {

@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.charles.ads.pdm.moviesmanager.R
+import com.charles.ads.pdm.moviesmanager.databinding.ActivityMovieBinding
 import com.charles.ads.pdm.moviesmanager.model.Constant.EXTRA_MOVIE
 import com.charles.ads.pdm.moviesmanager.model.Constant.VIEW_MOVIE
 import com.charles.ads.pdm.moviesmanager.model.entity.Movie
-import com.charles.ads.pdm.moviesmanager.R
-import com.charles.ads.pdm.moviesmanager.databinding.ActivityMovieBinding
 
 class MovieActivity : AppCompatActivity()  {
 

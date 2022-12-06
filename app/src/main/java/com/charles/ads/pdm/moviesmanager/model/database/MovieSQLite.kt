@@ -5,9 +5,9 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
+import com.projeto.ads.pdm.moviesmanager.R
 import com.charles.ads.pdm.moviesmanager.model.dao.MovieDAO
 import com.charles.ads.pdm.moviesmanager.model.entity.Movie
-import com.projeto.ads.pdm.moviesmanager.R
 import java.lang.Boolean.getBoolean
 import java.sql.SQLException
 
