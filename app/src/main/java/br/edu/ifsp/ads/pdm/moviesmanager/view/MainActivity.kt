@@ -12,7 +12,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.ads.pdm.moviesmanager.R
-import br.edu.ifsp.ads.pdm.moviesmanager.adapter.ContactAdapter
+import br.edu.ifsp.ads.pdm.moviesmanager.adapter.MovieAdapter
 import br.edu.ifsp.ads.pdm.moviesmanager.controller.MovieRoomController
 import br.edu.ifsp.ads.pdm.moviesmanager.databinding.ActivityMainBinding
 import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_CONTACT
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private val contactList: MutableList<Contact> = mutableListOf()
 
     // Adapter
-    private lateinit var contactAdapter: ContactAdapter
+    private lateinit var movieAdapter: MovieAdapter
 
     private lateinit var carl: ActivityResultLauncher<Intent>
 
@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(amb.root)
 
-        contactAdapter = ContactAdapter(this, contactList)
-        amb.contactsLv.adapter = contactAdapter
+        movieAdapter = MovieAdapter(this, contactList)
+        amb.contactsLv.adapter = movieAdapter
 
         carl = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult(),
@@ -127,6 +127,6 @@ class MainActivity : AppCompatActivity() {
     fun updateContactList(_contactList: MutableList<Contact>) {
         contactList.clear()
         contactList.addAll(_contactList)
-        contactAdapter.notifyDataSetChanged()
+        movieAdapter.notifyDataSetChanged()
     }
 }
