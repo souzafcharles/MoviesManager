@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textColor="@color/red"
+        android:textColor="@color/black"
         android:textSize="25sp" />
 
     <LinearLayout
@@ -26,16 +26,14 @@
             android:layout_height="wrap_content"
             android:text="grade"
             android:layout_weight="1"
-            android:textSize="20sp" />
-
+            android:textSize="18sp" />
         <TextView
             android:id="@+id/genreAndYearTv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Year | genre"
+            android:text="Year | genre "
             android:layout_weight="1"
-            android:textSize="20sp" />
-
+            android:textSize="18sp" />
     </LinearLayout>
 
 </LinearLayout>

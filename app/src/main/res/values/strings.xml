@@ -1,20 +1,19 @@
 <resources>
     <string name="app_name">MoviesManager</string>
-    <string name="name">Nome do filme</string>
+    <string name="cancel">Retornar</string>
+    <string name="confirm">Confirmar</string>
+    <string name="name">Nome</string>
     <string name="year">Ano de lançamento</string>
     <string name="duration">Duração (em minutos)</string>
     <string name="grade">Nota</string>
-    <string name="watched">Filme já assistido</string>
-    <string name="add_movie">Inserir Filme</string>
-    <string name="studio">Estúdio</string>
-    <string name="cancel">Voltar</string>
-    <string name="confirm">Inserir</string>
+    <string name="watched">Filme assistido</string>
+    <string name="add_movie">Adicionar filme</string>
+    <string name="studio">Estúdio ou Produtora</string>
     <string name="edit_movie">Editar filme</string>
     <string name="remove_movie">Remover filme</string>
     <string name="filter">Filtrar filmes</string>
     <string name="genre">Gênero</string>
     <string-array name="grades">
-        <item>Não avaliado</item>
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -26,35 +25,17 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
+        <item>Não avaliado</item>
     </string-array>
     <string-array name="genres">
-        <string-array name="genresChoice">
-            <item>Ação</item>
-            <item>Aventura</item>
-            <item>Cinema de arte</item>
-            <item>Chanchada</item>
-            <item>Comédia</item>
-            <item>Comédia de ação</item>
-            <item>Comédia de terror</item>
-            <item>Comédia dramática</item>
-            <item>Comédia romântica</item>
-            <item>Dança</item>
-            <item>Documentário</item>
-            <item>Docuficção</item>
-            <item>Drama</item>
-            <item>Espionagem</item>
-            <item>Faroeste</item>
-            <item>Fantasia</item>
-            <item>Fantasia científica</item>
-            <item>Ficção científica</item>
-            <item>Filmes com truques</item>
-            <item>Filmes de guerra</item>
-            <item>Mistério</item>
-            <item>Musical</item>
-            <item>Filme policial</item>
-            <item>Romance</item>
-            <item>Terror</item>
-            <item>Thriller</item>
-        </string-array>
+        <item>Ação</item>
+        <item>Aventura</item>
+        <item>Animação</item>
+        <item>Drama</item>
+        <item>Documentário</item>
+        <item>Fantasia</item>
+        <item>Romance</item>
+        <item>Suspense</item>
+        <item>Terror</item>
     </string-array>
 </resources>
