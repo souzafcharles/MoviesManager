@@ -8,6 +8,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.AdapterContextMenuInfo
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -15,69 +16,68 @@ import br.edu.ifsp.ads.pdm.moviesmanager.R
 import br.edu.ifsp.ads.pdm.moviesmanager.adapter.MovieAdapter
 import br.edu.ifsp.ads.pdm.moviesmanager.controller.MovieRoomController
 import br.edu.ifsp.ads.pdm.moviesmanager.databinding.ActivityMainBinding
-import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_CONTACT
-import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.VIEW_CONTACT
-import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Contact
+import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.EXTRA_MOVIE
+import br.edu.ifsp.ads.pdm.moviesmanager.model.Constant.VIEW_MOVIE
+import br.edu.ifsp.ads.pdm.moviesmanager.model.entity.Movie
 
 class MainActivity : AppCompatActivity() {
-    private val amb: ActivityMainBinding by lazy {
+
+    private val activityMainBinding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    // Data source
-    private val contactList: MutableList<Contact> = mutableListOf()
+    private lateinit var movieActivityResultLauncher: ActivityResultLauncher<Intent>
 
-    // Adapter
-    private lateinit var movieAdapter: MovieAdapter
+    private val movieList: MutableList<Movie> = mutableListOf()
 
-    private lateinit var carl: ActivityResultLauncher<Intent>
+    private var adding : Boolean = false
 
-    // Controller
-    private val contactController: MovieRoomController by lazy {
+    private val movieController: MovieRoomController by lazy {
         MovieRoomController(this)
     }
 
+    private lateinit var movieAdapter: MovieAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(amb.root)
+        setContentView(activityMainBinding.root)
 
-        movieAdapter = MovieAdapter(this, contactList)
-        amb.contactsLv.adapter = movieAdapter
+        movieAdapter = MovieAdapter(this, movieList)
+        activityMainBinding.movieLv.adapter = movieAdapter
 
-        carl = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult(),
-        ) { result ->
+        movieActivityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result ->
             if (result.resultCode == RESULT_OK) {
-                val contact = result.data?.getParcelableExtra<Contact>(EXTRA_CONTACT)
-
-                contact?.let { _contact->
-                    if (_contact.id != null) {
-                        val position = contactList.indexOfFirst { it.id == _contact.id }
-                        if (position != -1) {
-                            // Alterar na posição
-                            contactController.editContact(_contact)
+                val movie = result.data?.getParcelableExtra<Movie>(EXTRA_MOVIE)
+                movie?.let { _movie->
+                    val position = movieList.indexOfFirst { it.movieName == movie.movieName }
+                    if (position == -1) {
+                        movieController.insert(_movie)
+                    } else {
+                        if(!adding) {
+                            movieController.update(_movie)
+                        } else {
+                            Toast.makeText(this, "Esse filme já está cadastrado!", Toast.LENGTH_LONG).show()
                         }
                     }
-                    else {
-                        contactController.insertContact(_contact)
-                    }
+                    movieAdapter.notifyDataSetChanged()
                 }
             }
+            else Toast.makeText(this, "Operação não permitida.", Toast.LENGTH_SHORT).show()
+            adding = false
         }
 
-        registerForContextMenu(amb.contactsLv)
+        registerForContextMenu(activityMainBinding.movieLv)
 
-        amb.contactsLv.onItemClickListener =
+        activityMainBinding.movieLv.onItemClickListener =
             AdapterView.OnItemClickListener { _, _, position, _ ->
-                val contact = contactList[position]
-                val contactIntent = Intent(this@MainActivity, MovieActivity::class.java)
-                contactIntent.putExtra(EXTRA_CONTACT, contact)
-                contactIntent.putExtra(VIEW_CONTACT, true)
-                startActivity(contactIntent)
+                val movieIntent = Intent(this@MainActivity, MovieActivity::class.java)
+                movieIntent.putExtra(EXTRA_MOVIE, movieList[position])
+                movieIntent.putExtra(VIEW_MOVIE, true)
+                startActivity(movieIntent)
             }
 
-        // Buscando contatos no banco
-        contactController.getContacts()
+        movieController.getAll()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -85,48 +85,9 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
-            R.id.addContactMi -> {
-                carl.launch(Intent(this, MovieActivity::class.java))
-                true
-            }
-            else -> { false }
-        }
-    }
-
-    override fun onCreateContextMenu(
-        menu: ContextMenu?,
-        v: View?,
-        menuInfo: ContextMenu.ContextMenuInfo?
-    ) {
-        menuInflater.inflate(R.menu.context_menu_main, menu)
-    }
-
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        val position = (item.menuInfo as AdapterContextMenuInfo).position
-        val contact = contactList[position]
-        return when(item.itemId) {
-            R.id.removeContactMi -> {
-                // Remove o contato
-                contactController.removeContact(contact)
-                true
-            }
-            R.id.editContactMi -> {
-                // Chama a tela para editar o contato
-                val contactIntent = Intent(this, MovieActivity::class.java)
-                contactIntent.putExtra(EXTRA_CONTACT, contact)
-                contactIntent.putExtra(VIEW_CONTACT, false)
-                carl.launch(contactIntent)
-                true
-            }
-            else -> { false }
-        }
-    }
-
-    fun updateContactList(_contactList: MutableList<Contact>) {
-        contactList.clear()
-        contactList.addAll(_contactList)
+    fun updateMovieList(_movieList: MutableList<Movie>) {
+        movieList.clear()
+        movieList.addAll(_movieList)
         movieAdapter.notifyDataSetChanged()
     }
 }

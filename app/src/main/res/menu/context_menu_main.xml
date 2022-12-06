@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/removeContactMi"
-        android:title="Remove contact" />
+        android:title="Remover filme" />
 
     <item
         android:id="@+id/editContactMi"
-        android:title="Edit contact" />
+        android:title="Editar filme" />
 </menu>
